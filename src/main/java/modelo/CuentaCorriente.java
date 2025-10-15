@@ -10,25 +10,24 @@ import javax.swing.JOptionPane;
  *
  * @author Sofia
  */
-public class CuentaDeAhorros extends Cuenta {
+public class CuentaCorriente extends Cuenta {
 
-    public CuentaDeAhorros(String nombre, String numero, double saldo) {
+    public CuentaCorriente(String nombre, String numero, double saldo) {
         super(nombre, numero, saldo);
     }
 
-   
     
-    @Override
+     @Override
     public String toString() {
-        return "CUENTA DE AHORROS: " + "TITULAR: " + nombre + ", NÚMERO: " + numero + ", SALDO: " + saldo + ", FECHA APERTURA: "+ fecha + "\n";
+        return "CUENTA CORRIENTE: " + "TITULAR: " + nombre + ", NÚMERO: " + numero + ", SALDO: " + saldo + ", FECHA APERTURA: "+ fecha + "\n";
     }
     
-    @Override
-    public void Retirar(double monto){
-        
-        if (monto>saldo){
-            JOptionPane.showMessageDialog(null, "Fondos insuficientes");
-            
+     @Override
+    public void Retirar(double monto) {
+
+        if (saldo-monto < -500000) {
+            JOptionPane.showMessageDialog(null, "Fondos insuficientes, sobregiro excedido");
+
         } else {
             saldo -= monto;
             JOptionPane.showMessageDialog(null, "Retiro exitoso");
